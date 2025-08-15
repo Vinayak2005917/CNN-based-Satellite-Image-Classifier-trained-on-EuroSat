@@ -1,17 +1,19 @@
 # Satellite Image Classification (EuroSAT)
 
-This project is a deep learning-based satellite image classifier trained on the EuroSAT dataset. It uses a custom CNN architecture to classify images into 10 land use and land cover classes. The project provides both a Streamlit web app (`main.py`) and a Jupyter notebook (`test.ipynb`) for experimentation and demonstration.
+This project is a deep learning-based satellite image classifier trained on the EuroSAT dataset. It uses a custom CNN architecture to classify images into 10 land use and land cover classes. The project provides both a Streamlit web app (`main.py` or `app.py`) and a Jupyter notebook (`test.ipynb`) for experimentation and demonstration.
 
 ## Project Structure
 
-- `main.py`: Streamlit app for interactive image classification and visualization.
+-  `app.py`: Streamlit app for interactive image classification and visualization.
 - `model.py`: Contains the CNN model definition (`CNN64x64`).
-- `test.ipynb`: Jupyter notebook for testing the model, running predictions, and visualizing results.
-- `eurosat_cnn64x64.pth`: Pretrained model weights.
+- `train.ipynb`: Jupyter notebook for traing, tuning and testing the model, running predictions, and visualizing results.
+- `eurosat_cnn64x64.pth`: Pretrained model weights. 
+- Note : Since the file is too big to upload on github you have to run the python notebook and create the file. Just run all the cells in order, Or download it from : `yet to added`
 - `requirements.txt`: Python dependencies.
-- `uploaded_image.jpg`: Example image for testing.
 
 ## Getting Started
+
+Go to : `yet to added`
 
 ### 1. Install Dependencies
 
@@ -22,7 +24,7 @@ pip install -r requirements.txt
 ### 2. Run the Streamlit App
 
 ```powershell
-streamlit run main.py
+streamlit run app.py
 ```
 
 - Select an image from the grid to classify.
@@ -54,7 +56,7 @@ Open `test.ipynb` in Jupyter or VS Code to:
 
 ## Dataset
 
-- EuroSAT dataset (https://github.com/phelber/eurosat)
+- EuroSAT dataset (https://www.kaggle.com/datasets/apollo2506/eurosat-dataset)
 - The test set is referenced via a CSV file in the Streamlit app.
 
 ## How It Works

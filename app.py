@@ -32,8 +32,12 @@ class_names = [
     "Pasture", "PermanentCrop", "Residential", "River", "SeaLake"
 ]
 
-st.header("Satellite Image Classification")
-st.write("CNN trained on EuroSAT dataset")
+st.header("EuroSat Satellite Image Classification")
+st.write("This CNN model is trained on only the EuroSAT dataset, which has a scale of 10m/px. "
+"since it is so specific we cannot expect it to generalize well to other datasets. " 
+"The Following are some examples of images from the test part of the dataset:")
+
+st.markdown("---")
 
 # ----------------------
 # Load test CSV and pick 25 random images
@@ -102,5 +106,37 @@ elif selected_img_path:
     buf = io.BytesIO()
     plt.savefig(buf, format='png')
     buf.seek(0)
-    st.image(buf, caption="Probability Distribution", use_container_width=True)
+    st.image(buf, use_container_width=True)
+    st.write("Probability Distribution")
     plt.close(fig)
+
+st.markdown("---")
+
+st.markdown("# About")
+st.markdown("#### Hyperparameters")
+st.write("learning rate : 0.001")
+st.write("number of epochs : 2")
+st.write("number of classes : 10")
+st.write(" ")
+st.write(" ")
+
+
+
+st.markdown("#### Model structure")
+st.write("Convolutional layers 1 (in channel = 3 , out channel = 32, kernel size = 3)")
+st.write("Convolutional layers 2 (in channel = 32 , out channel = 64, kernel size = 3)")
+st.write("Max Pooling layers 1")
+st.write("Convolutional layers 3 (in channel = 64 , out channel = 128, kernel size = 3)")
+st.write("Convolutional layers 4 (in channel = 128 , out channel = 256, kernel size = 3)")
+st.write("Max Pooling layers 2")
+st.write("Fully connected layers 1")
+st.write("Fully connected layers 2")
+st.write("ReLU activation")
+st.write(" ")
+st.write(" ")
+
+
+st.markdown("#### Model training")
+st.write("at 2 epochs, the current model is at 76% accuracy")
+st.write("you can train the model on your own from [here](https://github.com/Vinayak2005917/CNN-based-Satellite-Image-Classifier-trained-on-EuroSat) or wait for me to train one at a higher epoch")
+

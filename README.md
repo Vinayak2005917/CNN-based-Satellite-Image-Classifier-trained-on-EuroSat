@@ -13,7 +13,7 @@ This project is a deep learning-based satellite image classifier trained on the 
 
 ## Getting Started
 
-Go to : `yet to added`
+Go to : https://vinayak2005917-cnn-based-satellite-image-classifier--app-z2wg1m.streamlit.app/
 
 ### 1. Install Dependencies
 

@@ -60,13 +60,14 @@ if not selected_img_path:
     st.subheader("Select an image from the test set")
     for i, idx in enumerate(random_indices):
         img_filename = image_files[idx]
+        true_label = img_filename.split("_")[0]
         img_path = os.path.join(test_images_dir, img_filename)
         img = Image.open(img_path).convert("RGB")
         col = cols[i % 5]
         col.image(img, width=180)  # Increased image size
         if col.button(f"Select", key=f"img_{i}"):
             st.session_state['selected_img_path'] = img_path
-            st.session_state['selected_class'] = img_filename
+            st.session_state['selected_class'] = true_label
             st.rerun()
 
 # ----------------------

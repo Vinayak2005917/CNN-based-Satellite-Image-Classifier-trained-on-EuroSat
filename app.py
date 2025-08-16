@@ -42,12 +42,16 @@ st.markdown("---")
 # ----------------------
 # Load test CSV and pick 25 random images
 # ----------------------
-test_df = pd.read_csv(test_csv_path)
+
+# Use images from test_images folder in project directory
+test_images_dir = os.path.join(os.getcwd(), "test_images")
+image_files = [f for f in os.listdir(test_images_dir) if f.lower().endswith(('.png', '.jpg', '.jpeg'))]
 num_images = 25
-random_indices = random.sample(range(len(test_df)), num_images)
+if 'random_indices' not in st.session_state or st.session_state['random_indices'] is None:
+    st.session_state['random_indices'] = random.sample(range(len(image_files)), num_images)
+random_indices = st.session_state['random_indices']
 selected_img_path = st.session_state.get('selected_img_path', None)
 selected_class = st.session_state.get('selected_class', None)
-
 
 cols = st.columns(5)
 
@@ -55,14 +59,14 @@ if not selected_img_path:
     # Display images in a 5x5 grid with buttons
     st.subheader("Select an image from the test set")
     for i, idx in enumerate(random_indices):
-        img_path = os.path.join(path, "EuroSAT", test_df.iloc[idx, 1])
-        class_label = test_df.iloc[idx, 3]
+        img_filename = image_files[idx]
+        img_path = os.path.join(test_images_dir, img_filename)
         img = Image.open(img_path).convert("RGB")
         col = cols[i % 5]
         col.image(img, width=180)  # Increased image size
         if col.button(f"Select", key=f"img_{i}"):
             st.session_state['selected_img_path'] = img_path
-            st.session_state['selected_class'] = class_label
+            st.session_state['selected_class'] = img_filename
             st.rerun()
 
 # ----------------------
@@ -73,6 +77,7 @@ elif selected_img_path:
     if st.button("Go Back", key="go_back"):
         st.session_state['selected_img_path'] = None
         st.session_state['selected_class'] = None
+        st.session_state['random_indices'] = None
         st.rerun()
     img = Image.open(selected_img_path).convert("RGB")
     tensor_img = transform(img).unsqueeze(0)
@@ -83,7 +88,7 @@ elif selected_img_path:
         pred_class = torch.argmax(outputs, dim=1).item()
 
     st.image(img, caption=f"Selected Image: {selected_class}", width=350)
-    st.header(f"Predicted class: {class_names[pred_class]}")
+    st.header(f"Predicted : {class_names[pred_class]} with {probs[pred_class].item()*100:.2f}% confidence")
     if selected_class == class_names[pred_class]:
         st.success("Correct Prediction!")
     else:
@@ -115,7 +120,7 @@ st.markdown("---")
 st.markdown("# About")
 st.markdown("#### Hyperparameters")
 st.write("learning rate : 0.001")
-st.write("number of epochs : 2")
+st.write("number of epochs : 10")
 st.write("number of classes : 10")
 st.write(" ")
 st.write(" ")
@@ -137,6 +142,6 @@ st.write(" ")
 
 
 st.markdown("#### Model training")
-st.write("at 2 epochs, the current model is at 76% accuracy")
+st.write("at 10 epochs, the current model is at 86.7% accuracy")
 st.write("you can train the model on your own from [here](https://github.com/Vinayak2005917/CNN-based-Satellite-Image-Classifier-trained-on-EuroSat) or wait for me to train one at a higher epoch")
 

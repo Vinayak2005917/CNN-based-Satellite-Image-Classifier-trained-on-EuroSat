@@ -7,13 +7,12 @@ This project is a deep learning-based satellite image classifier trained on the 
 -  `app.py`: Streamlit app for interactive image classification and visualization.
 - `model.py`: Contains the CNN model definition (`CNN64x64`).
 - `train.ipynb`: Jupyter notebook for traing, tuning and testing the model, running predictions, and visualizing results.
-- `eurosat_cnn64x64.pth`: Pretrained model weights. 
-- Note : Since the file is too big to upload on github you have to run the python notebook and create the file. Just run all the cells in order, Or download it from : `yet to added`
+- `eurosat_cnn64x64.pth`: Pretrained model weights.
 - `requirements.txt`: Python dependencies.
 
 ## Getting Started
 
-Go to : https://vinayak2005917-cnn-based-satellite-image-classifier--app-z2wg1m.streamlit.app/
+Go to : https://cnn-based-satellite-image-classifier-trained-on-eurosat-jebxjw.streamlit.app/
 
 ### 1. Install Dependencies
 

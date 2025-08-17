@@ -6,13 +6,26 @@ This project is a deep learning-based satellite image classifier trained on the 
 
 -  `app.py`: Streamlit app for interactive image classification and visualization.
 - `model.py`: Contains the CNN model definition (`CNN64x64`).
-- `train.ipynb`: Jupyter notebook for traing, tuning and testing the model, running predictions, and visualizing results.
+- `train.ipynb`: Jupyter notebook for training, tuning, and testing the model, running predictions, and visualizing results.
 - `eurosat_cnn64x64.pth`: Pretrained model weights.
 - `requirements.txt`: Python dependencies.
 
 ## Getting Started
 
-Go to : https://cnn-based-satellite-image-classifier-trained-on-eurosat-jebxjw.streamlit.app/
+<img width="926" height="782" alt="image" src="https://github.com/user-attachments/assets/c9e724f0-6286-4aa4-949a-96e61068aa2c" />
+
+Go to: https://cnn-based-satellite-image-classifier-trained-on-eurosat-jebxjw.streamlit.app/
+
+## Dataset
+
+- EuroSAT dataset (https://www.kaggle.com/datasets/apollo2506/eurosat-dataset)
+- The test set is referenced via a CSV file in the Streamlit app.
+
+## How It Works
+
+- Images are loaded and preprocessed using torchvision transforms.
+- The model predicts class probabilities for each image.
+- Results are visualized as bar charts and images in the app/notebook.
 
 ### 1. Install Dependencies
 
@@ -44,7 +57,7 @@ Open `test.ipynb` in Jupyter or VS Code to:
 - The model is trained to classify images into the following classes:
   - AnnualCrop
   - Forest
-  - HerbaceousVegetation
+  - Herbaceous Vegetation
   - Highway
   - Industrial
   - Pasture
@@ -53,20 +66,9 @@ Open `test.ipynb` in Jupyter or VS Code to:
   - River
   - SeaLake
 
-## Dataset
-
-- EuroSAT dataset (https://www.kaggle.com/datasets/apollo2506/eurosat-dataset)
-- The test set is referenced via a CSV file in the Streamlit app.
-
-## How It Works
-
-- Images are loaded and preprocessed using torchvision transforms.
-- The model predicts class probabilities for each image.
-- Results are visualized as bar charts and images in the app/notebook.
 
 ## Customization
 
-- You can replace `uploaded_image.jpg` with your own image for testing.
 - Modify `model.py` to experiment with different architectures.
 
 ## License

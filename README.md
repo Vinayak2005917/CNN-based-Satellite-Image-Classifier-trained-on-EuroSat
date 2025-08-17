@@ -12,7 +12,9 @@ This project is a deep learning-based satellite image classifier trained on the 
 
 ## Getting Started
 
-<img width="463" height="391" alt="image" src="https://github.com/user-attachments/assets/c9e724f0-6286-4aa4-949a-96e61068aa2c" />
+<p align="center">
+  <img width="532" height="450" alt="image" src="https://github.com/user-attachments/assets/c9e724f0-6286-4aa4-949a-96e61068aa2c" />
+</p>
 
 Go to: https://cnn-based-satellite-image-classifier-trained-on-eurosat-jebxjw.streamlit.app/
 
